@@ -1,3 +1,5 @@
+using TMPro;
+using UnityEditor;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -7,8 +9,18 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject _opcionsContent;
     [SerializeField] GameObject _creditsContent;
 
+    [Header("Texts")]
+    [SerializeField] TextMeshProUGUI _companyName;
+    [SerializeField] TextMeshProUGUI _versionGame;
+
     [Header("Canvas Group")]
     [SerializeField] CanvasGroup _canvasGroup;
+
+    private void Start()
+    {
+        _companyName.text = PlayerSettings.companyName;
+        _versionGame.text = PlayerSettings.bundleVersion;
+    }
 
     public void PlayContentEnable()
     {
