@@ -6,16 +6,27 @@ public class Player : MonoBehaviour
     [Header("Parameters")]
     [SerializeField] float _speedMovement;
     [Header("Bullet")]
-    [SerializeField] GameObject _bulletPrefab;
+    [SerializeField] PlayerBullet _bulletPrefab;
     [SerializeField] Transform _bulletSpawn;
     [SerializeField] float _fireRate;
+    [SerializeField] float _damage;
     float _timer;
+    [SerializeField] int _health = 3;
 
-    Player_Inputs _inputs;
+    Factory<PlayerBullet> _factory;
+    ObjectPool<PlayerBullet> _objectPool;
 
-    private void Awake()
+    PlayerInputs _inputs;
+
+    public float Damage { get { return _damage; } set { _damage = value; } }
+    public int Health { get { return _health; } set { _health = value; } }
+
+    private void Start()
     {
-        _inputs = new Player_Inputs(this);
+        _inputs = new PlayerInputs(this);
+
+        _factory = new PlayerBulletFactory(_bulletPrefab);
+        _objectPool = new ObjectPool<PlayerBullet>(_factory.GetObj, PlayerBullet.TurnOff, PlayerBullet.TurnOn, 4);
     }
 
     private void Update()
@@ -35,9 +46,17 @@ public class Player : MonoBehaviour
 
         if (_timer > _fireRate)
         {
-            Instantiate(_bulletPrefab, _bulletSpawn.position, Quaternion.identity);
+            PlayerBullet bullet = _objectPool.Get();
+            bullet.AddReference(_objectPool);
+            bullet.transform.position = _bulletSpawn.position;
+            bullet.transform.forward = _bulletSpawn.forward;
+            bullet.Damage = _damage;
             _timer = 0;
         }
+    }
+
+    public void GetDamage(int dmg)
+    {
 
     }
 }
