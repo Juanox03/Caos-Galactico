@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -9,17 +10,17 @@ public class Player : MonoBehaviour
     [SerializeField] PlayerBullet _bulletPrefab;
     [SerializeField] Transform _bulletSpawn;
     [SerializeField] float _fireRate;
-    [SerializeField] float _damage;
     float _timer;
+    [SerializeField] float _damage;
     [SerializeField] int _health = 3;
+    [SerializeField] GameObject[] _hearts;
 
     Factory<PlayerBullet> _factory;
     ObjectPool<PlayerBullet> _objectPool;
 
     PlayerInputs _inputs;
 
-    public float Damage { get { return _damage; } set { _damage = value; } }
-    public int Health { get { return _health; } set { _health = value; } }
+    public static event Action OnDeath;
 
     private void Start()
     {
@@ -55,8 +56,31 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void GetDamage(int dmg)
+    public void RecuperarVida()
     {
+        if (_health < 3)
+        {
+            _health = 3;
+            for (int i = 0; i < 2; i++)
+                _hearts[i].SetActive(true);
+        }
+        else return;
+    }
 
+    public void PowerUpMoreDamage(int amount)
+    {
+        _damage *= amount;
+    }
+
+    public void GetDamage()
+    {
+        _health--;
+        _hearts[_health].SetActive(false);
+
+        if(_health <= 0)
+        {
+            OnDeath?.Invoke();
+            Destroy(gameObject);
+        }
     }
 }

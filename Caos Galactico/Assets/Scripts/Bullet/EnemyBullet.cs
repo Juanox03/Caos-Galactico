@@ -1,25 +1,20 @@
 using UnityEngine;
 
-public class PlayerBullet : MonoBehaviour
+public class EnemyBullet : MonoBehaviour
 {
     [SerializeField] float _speedMovement;
     [SerializeField] float _lifeTime = 5;
-    [SerializeField] float _damage;
 
     public float counter;
-    ObjectPool<PlayerBullet> _objectPool;
-
-    public float Damage { get { return _damage; } set {  _damage = value; } }
+    ObjectPool<EnemyBullet> _objectPool;
 
     private void Update()
     {
         transform.position += transform.forward * _speedMovement * Time.deltaTime;
-        
+
         counter += Time.deltaTime;
         if (counter >= 2)
-        {
             _objectPool.StockAdd(this);
-        }
 
         _lifeTime -= Time.deltaTime;
         if (_lifeTime <= 0)
@@ -29,26 +24,28 @@ public class PlayerBullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        var enemy = other.GetComponent<Enemy>();
-        if(enemy != null)
+        var player = other.GetComponent<Player>();
+        if (player != null)
         {
-            enemy.GetDamage(_damage);
-        }
+            if(player.CompareTag("Player"))
+                player.GetDamage();
 
-        Destroy(gameObject);
+        }
+        
+        //Destroy(gameObject);
     }
 
-    public void AddReference(ObjectPool<PlayerBullet> op)
+    public void AddReference(ObjectPool<EnemyBullet> op)
     {
         _objectPool = op;
     }
 
-    public static void TurnOff(PlayerBullet bullet)
+    public static void TurnOff(EnemyBullet bullet)
     {
         bullet.gameObject.SetActive(false);
     }
 
-    public static void TurnOn(PlayerBullet bullet)
+    public static void TurnOn(EnemyBullet bullet)
     {
         bullet.counter = 0;
         bullet.gameObject.SetActive(true);

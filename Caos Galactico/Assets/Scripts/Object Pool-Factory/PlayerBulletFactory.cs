@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class PlayerBulletFactory : Factory<PlayerBullet>
 {
     public PlayerBulletFactory(PlayerBullet p)

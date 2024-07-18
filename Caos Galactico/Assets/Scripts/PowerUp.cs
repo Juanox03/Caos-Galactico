@@ -18,11 +18,10 @@ public class PowerUp : MonoBehaviour
             switch (_powerUpType)
             {
                 case PowerUpType.Damage:
-                    player.Damage *= _amount;
+                    player.PowerUpMoreDamage(_amount);
                     break;
                 case PowerUpType.Health:
-                    if(player.Health < 3)
-                    player.Health = 3;
+                    player.RecuperarVida();
                     break;
                 default:
                     break;
