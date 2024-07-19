@@ -9,33 +9,31 @@ public class PlayerBullet : MonoBehaviour
     public float counter;
     ObjectPool<PlayerBullet> _objectPool;
 
-    public float Damage { get { return _damage; } set {  _damage = value; } }
+    public float Damage { get { return _damage; } set { _damage = value; } }
 
     private void Update()
     {
         transform.position += transform.forward * _speedMovement * Time.deltaTime;
-        
+
         counter += Time.deltaTime;
         if (counter >= 2)
         {
             _objectPool.StockAdd(this);
         }
-
-        _lifeTime -= Time.deltaTime;
-        if (_lifeTime <= 0)
-            Destroy(gameObject);
-
     }
 
     private void OnTriggerEnter(Collider other)
     {
         var enemy = other.GetComponent<Enemy>();
-        if(enemy != null)
+        if (enemy != null)
         {
             enemy.GetDamage(_damage);
+            Destroy(gameObject);
         }
 
-        Destroy(gameObject);
+        if (other.CompareTag("Wall"))
+            Destroy(gameObject);
+
     }
 
     public void AddReference(ObjectPool<PlayerBullet> op)

@@ -16,10 +16,6 @@ public class EnemyBullet : MonoBehaviour
         if (counter >= 2)
             _objectPool.StockAdd(this);
 
-        _lifeTime -= Time.deltaTime;
-        if (_lifeTime <= 0)
-            Destroy(gameObject);
-
     }
 
     private void OnTriggerEnter(Collider other)
@@ -27,12 +23,12 @@ public class EnemyBullet : MonoBehaviour
         var player = other.GetComponent<Player>();
         if (player != null)
         {
-            if(player.CompareTag("Player"))
-                player.GetDamage();
-
+            player.GetDamage();
+            Destroy(gameObject);
         }
-        
-        //Destroy(gameObject);
+
+        if (other.CompareTag("Wall"))
+            Destroy(gameObject);
     }
 
     public void AddReference(ObjectPool<EnemyBullet> op)

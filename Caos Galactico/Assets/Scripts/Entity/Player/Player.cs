@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField] float _fireRate;
     float _timer;
     [SerializeField] float _damage;
+    [Header("Health")]
     [SerializeField] int _health = 3;
     [SerializeField] GameObject[] _hearts;
 
@@ -37,8 +38,8 @@ public class Player : MonoBehaviour
 
     public void Movement(float vertical, float horizontal)
     {
-        transform.position += transform.forward  * vertical * _speedMovement * Time.deltaTime;
-        transform.position += transform.right  * horizontal * _speedMovement * Time.deltaTime;
+        transform.position += transform.forward * vertical * _speedMovement * Time.deltaTime;
+        transform.position += transform.right * horizontal * _speedMovement * Time.deltaTime;
     }
 
     public void Shoot()
@@ -77,7 +78,7 @@ public class Player : MonoBehaviour
         _health--;
         _hearts[_health].SetActive(false);
 
-        if(_health <= 0)
+        if (_health <= 0)
         {
             OnDeath?.Invoke();
             Destroy(gameObject);

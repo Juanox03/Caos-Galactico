@@ -20,13 +20,13 @@ public class PlayerInputs
         if (vertical != 0)
             Move(vertical: vertical);
         float horizontal = Input.GetAxisRaw("Horizontal");
-        if(horizontal != 0)
+        if (horizontal != 0)
             Move(horizontal: horizontal);
 
         if (Input.GetMouseButton(0))
             Shoot();
 
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
             GameManager.Instance.GamePause();
     }
 

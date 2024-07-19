@@ -1,88 +1,27 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class Scenemanager : MonoBehaviour
 {
-    [SerializeField] GameObject _loadScreen;
-    [SerializeField] Slider _sliderBar;
+    public static Scenemanager Instance;
 
-    public void ChangeLevel1(string levelName)
+    string _levelName;
+    public string LevelName { get { return _levelName; } }
+
+    private void Start()
     {
-        StartCoroutine(ChargeLevel1(levelName));
-    }
-
-    public void ChangeLevel2(string levelName)
-    {
-        StartCoroutine(ChargeLevel2(levelName));
-    }
-
-    public void ChangeLevel3(string levelName)
-    {
-        StartCoroutine(ChargeLevel3(levelName));
-    }
-
-    public void ChangeLevelTest(string levelName)
-    {
-        StartCoroutine(ChargeLevelTest(levelName));
-    }
-
-    #region Corrutinas
-    IEnumerator ChargeLevel1(string levelName)
-    {
-        AsyncOperation async = SceneManager.LoadSceneAsync(levelName);
-        _loadScreen.SetActive(true);
-
-        while (!async.isDone)
+        if (Instance == null)
         {
-            float progreso = Mathf.Clamp01(async.progress / 0.9f);
-            _sliderBar.value = progreso;
-
-            yield return null;
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
+        else
+            Destroy(gameObject);
     }
-    
-    IEnumerator ChargeLevel2(string levelName)
+
+    public void ChangeLevel(string levelName)
     {
-        AsyncOperation async = SceneManager.LoadSceneAsync(levelName);
-        _loadScreen.SetActive(true);
-
-        while (!async.isDone)
-        {
-            float progreso = Mathf.Clamp01(async.progress / 0.9f);
-            _sliderBar.value = progreso;
-
-            yield return null;
-        }
+        _levelName = levelName;
+        SceneManager.LoadScene("Loading");
     }
-    
-    IEnumerator ChargeLevel3(string levelName)
-    {
-        AsyncOperation async = SceneManager.LoadSceneAsync(levelName);
-        _loadScreen.SetActive(true);
-
-        while (!async.isDone)
-        {
-            float progreso = Mathf.Clamp01(async.progress / 0.9f);
-            _sliderBar.value = progreso;
-
-            yield return null;
-        }
-    }
-    
-    IEnumerator ChargeLevelTest(string levelName)
-    {
-        AsyncOperation async = SceneManager.LoadSceneAsync(levelName);
-        _loadScreen.SetActive(true);
-
-        while (!async.isDone)
-        {
-            float progreso = Mathf.Clamp01(async.progress / 0.9f);
-            _sliderBar.value = progreso;
-
-            yield return null;
-        }
-    }
-    #endregion
 }

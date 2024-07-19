@@ -2,7 +2,7 @@ using TMPro;
 using UnityEditor;
 using UnityEngine;
 
-public class UIManager : MonoBehaviour
+public class MainMenuUIManager : MonoBehaviour
 {
     [Header("Contents")]
     [SerializeField] GameObject _playContent;

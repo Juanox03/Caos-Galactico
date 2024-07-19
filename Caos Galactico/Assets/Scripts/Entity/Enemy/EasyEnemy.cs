@@ -6,8 +6,8 @@ public class EasyEnemy : Enemy
 {
     [Header("Values")]
     [Header("Parameters")]
-    [SerializeField] float _speedMovement = 5f;
-    [SerializeField] float _movementRange = 4f;
+    [SerializeField] float _speedMovement = 5;
+    [SerializeField] float _movementRange = 4;
     [Header("Life Config")]
     [SerializeField] Image _barLife;
     [SerializeField] float _maxLife;
@@ -15,10 +15,10 @@ public class EasyEnemy : Enemy
     [Header("Bullet Config")]
     [SerializeField] EnemyBullet _bulletPrefab;
     [SerializeField] Transform _bulletSpawn;
-    [SerializeField] float _fireRate = 1.0f;
+    [SerializeField] float _fireRate = 1;
     float _timer;
     [SerializeField] int _numberOfProjectiles = 5;
-    
+
     Factory<EnemyBullet> _factory;
     ObjectPool<EnemyBullet> _objectPool;
 
@@ -59,7 +59,6 @@ public class EasyEnemy : Enemy
                 bullet.transform.position = spawnPosition;
                 bullet.transform.forward = _bulletSpawn.forward;
             }
-
             _timer = 0;
         }
     }
@@ -69,7 +68,7 @@ public class EasyEnemy : Enemy
         _life -= dmg;
         _barLife.fillAmount = _life / _maxLife;
 
-        if(_life <= 0)
+        if (_life <= 0)
         {
             OnDeath?.Invoke();
             Destroy(gameObject);

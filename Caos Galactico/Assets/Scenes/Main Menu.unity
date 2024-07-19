@@ -2948,6 +2948,7 @@ GameObject:
   - component: {fileID: 1117025432}
   - component: {fileID: 1117025431}
   - component: {fileID: 1117025430}
+  - component: {fileID: 1117025433}
   m_Layer: 5
   m_Name: BTN_Level3
   m_TagString: Untagged
@@ -3018,19 +3019,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1117025431}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1523855546}
-        m_TargetAssemblyTypeName: Scenemanager, Assembly-CSharp
-        m_MethodName: ChangeLevel3
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1117025431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3069,6 +3058,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1117025428}
   m_CullTransparentMesh: 1
+--- !u!114 &1117025433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117025428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0380528278f24e42b930e6f18da0944, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 1117025430}
+  _levelName: Level 3
 --- !u!1 &1126887775
 GameObject:
   m_ObjectHideFlags: 0
@@ -3081,6 +3084,7 @@ GameObject:
   - component: {fileID: 1126887779}
   - component: {fileID: 1126887778}
   - component: {fileID: 1126887777}
+  - component: {fileID: 1126887780}
   m_Layer: 5
   m_Name: BTN_Level1
   m_TagString: Untagged
@@ -3151,19 +3155,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1126887778}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1523855546}
-        m_TargetAssemblyTypeName: Scenemanager, Assembly-CSharp
-        m_MethodName: ChangeLevel1
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1126887778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3202,6 +3194,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1126887775}
   m_CullTransparentMesh: 1
+--- !u!114 &1126887780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126887775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0380528278f24e42b930e6f18da0944, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 1126887777}
+  _levelName: Level 1
 --- !u!1 &1143688421
 GameObject:
   m_ObjectHideFlags: 0
@@ -3607,6 +3613,7 @@ GameObject:
   - component: {fileID: 1252225085}
   - component: {fileID: 1252225084}
   - component: {fileID: 1252225083}
+  - component: {fileID: 1252225086}
   m_Layer: 5
   m_Name: BTN_Level2
   m_TagString: Untagged
@@ -3677,19 +3684,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1252225084}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1523855546}
-        m_TargetAssemblyTypeName: Scenemanager, Assembly-CSharp
-        m_MethodName: ChangeLevel2
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1252225084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3728,6 +3723,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1252225081}
   m_CullTransparentMesh: 1
+--- !u!114 &1252225086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252225081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0380528278f24e42b930e6f18da0944, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 1252225083}
+  _levelName: Level 2
 --- !u!1 &1256109030
 GameObject:
   m_ObjectHideFlags: 0
@@ -4985,7 +4994,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1523855547}
-  - component: {fileID: 1523855546}
+  - component: {fileID: 1523855548}
   m_Layer: 0
   m_Name: Scene Manager
   m_TagString: Untagged
@@ -4993,20 +5002,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1523855546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1523855545}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7451949f280aa5f4bb519cd2f179ab44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _loadScreen: {fileID: 1290014929}
-  _sliderBar: {fileID: 1282218284}
 --- !u!4 &1523855547
 Transform:
   m_ObjectHideFlags: 0
@@ -5022,6 +5017,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1523855548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523855545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7451949f280aa5f4bb519cd2f179ab44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1536483084
 GameObject:
   m_ObjectHideFlags: 0
@@ -5177,6 +5184,7 @@ GameObject:
   - component: {fileID: 1588599060}
   - component: {fileID: 1588599059}
   - component: {fileID: 1588599058}
+  - component: {fileID: 1588599061}
   m_Layer: 5
   m_Name: BTN_Test
   m_TagString: Untagged
@@ -5247,19 +5255,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1588599059}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1523855546}
-        m_TargetAssemblyTypeName: Scenemanager, Assembly-CSharp
-        m_MethodName: ChangeLevelTest
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Test
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1588599059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5298,6 +5294,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1588599056}
   m_CullTransparentMesh: 1
+--- !u!114 &1588599061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588599056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0380528278f24e42b930e6f18da0944, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 1588599058}
+  _levelName: Test
 --- !u!1 &1623266580
 GameObject:
   m_ObjectHideFlags: 0
