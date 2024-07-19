@@ -1,46 +1,57 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class EasyEnemy : Enemy
 {
+    [Header("Values")]
+    [Header("Parameters")]
+    [SerializeField] float _speedMovement = 5f;
+    [SerializeField] float _movementRange = 4f;
+    [Header("Life Config")]
     [SerializeField] Image _barLife;
     [SerializeField] float _maxLife;
     [SerializeField] float _life;
-
-    [SerializeField] float _fireRate;
-    float _timer;
-
+    [Header("Bullet Config")]
     [SerializeField] EnemyBullet _bulletPrefab;
     [SerializeField] Transform _bulletSpawn;
-
+    [SerializeField] float _fireRate = 1.0f;
+    float _timer;
+    [SerializeField] int _numberOfProjectiles = 5;
+    
     Factory<EnemyBullet> _factory;
     ObjectPool<EnemyBullet> _objectPool;
 
-    public float shootInterval = 1.0f;
-    public int numberOfProjectiles = 5;
-    public float projectileSpeed = 5.0f;
+    public static event Action OnDeath;
 
     private void Start()
     {
         _life = _maxLife;
 
         _factory = new EnemyBulletFactory(_bulletPrefab);
-        _objectPool = new ObjectPool<EnemyBullet>(_factory.GetObj, EnemyBullet.TurnOff, EnemyBullet.TurnOn, 100);
+        _objectPool = new ObjectPool<EnemyBullet>(_factory.GetObj, EnemyBullet.TurnOff, EnemyBullet.TurnOn, 50);
     }
 
     private void Update()
     {
+        Move();
         Shoot();
+    }
+
+    private void Move()
+    {
+        float posicionX = Mathf.PingPong(Time.time * _speedMovement, _movementRange) - (_movementRange / 2);
+        transform.position = new Vector3(posicionX, transform.position.y, transform.position.z);
     }
 
     private void Shoot()
     {
         _timer += Time.deltaTime;
 
-        if (_timer > shootInterval)
+        if (_timer > _fireRate)
         {
-            float startX = -numberOfProjectiles / 2.0f;
-            for (int i = 0; i < numberOfProjectiles; i++)
+            float startX = -_numberOfProjectiles / 2.0f;
+            for (int i = 0; i < _numberOfProjectiles; i++)
             {
                 Vector3 spawnPosition = transform.position + new Vector3(startX + i, 0, 0);
                 EnemyBullet bullet = _objectPool.Get();
@@ -57,5 +68,11 @@ public class EasyEnemy : Enemy
     {
         _life -= dmg;
         _barLife.fillAmount = _life / _maxLife;
+
+        if(_life <= 0)
+        {
+            OnDeath?.Invoke();
+            Destroy(gameObject);
+        }
     }
 }

@@ -25,6 +25,9 @@ public class PlayerInputs
 
         if (Input.GetMouseButton(0))
             Shoot();
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+            GameManager.Instance.GamePause();
     }
 
     private void Move(float vertical = default, float horizontal = default)
