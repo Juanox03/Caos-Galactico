@@ -3,7 +3,6 @@ using UnityEngine;
 public class PlayerBullet : MonoBehaviour
 {
     [SerializeField] float _speedMovement;
-    [SerializeField] float _lifeTime = 5;
     [SerializeField] float _damage;
 
     public float counter;
