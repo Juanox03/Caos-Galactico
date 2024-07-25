@@ -1,8 +1,15 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+
+    [Header("Instantiate Player/Enemy")]
+    [SerializeField] Player _player;
+    [SerializeField] Enemy[] _enemys;
+    [SerializeField] Transform _spawnPointPlayer;
+    [SerializeField] Transform _spawnPointEnemy;
 
     [Header("Instantiate Power Up")]
     [SerializeField] GameObject[] _powerUpPrefabs;
@@ -14,14 +21,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] CanvasGroup _gameWinScreen;
     [SerializeField] CanvasGroup _gamePauseScreen;
 
+    private bool _instantiateEnity = true;
     private void Awake()
     {
         Player.OnDeath += OnPLayerLose;
         EasyEnemy.OnDeath += OnPLayerWin;
-    }
 
-    private void Start()
-    {
         if (Instance == null)
         {
             Instance = this;
@@ -38,6 +43,36 @@ public class GameManager : MonoBehaviour
         {
             InstantiatePowerUp();
             _timer = 0;
+        }
+
+        var levelName = SceneManager.GetActiveScene().name;
+
+        switch (levelName)
+        {
+            case "Level 1":
+                if (_instantiateEnity)
+                {
+                    Instantiate(_enemys[0], _spawnPointEnemy.position, _enemys[0].transform.rotation);
+                    Instantiate(_player, _spawnPointPlayer.position, Quaternion.identity);
+                    _instantiateEnity = false;
+                }
+                break;
+            case "Level 2":
+                if (_instantiateEnity)
+                {
+                    Instantiate(_enemys[1], _spawnPointEnemy.position, _enemys[1].transform.rotation);
+                    Instantiate(_player, _spawnPointPlayer.position, Quaternion.identity);
+                    _instantiateEnity = false;
+                }
+                break;
+            case "Level 3":
+                if (_instantiateEnity)
+                {
+                    Instantiate(_enemys[2], _spawnPointEnemy.position, _enemys[2].transform.rotation);
+                    Instantiate(_player, _spawnPointPlayer.position, Quaternion.identity);
+                    _instantiateEnity = false;
+                }
+                break;
         }
     }
 

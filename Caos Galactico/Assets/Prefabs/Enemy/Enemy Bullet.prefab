@@ -96,7 +96,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speedMovement: 5
-  _lifeTime: 5
   counter: 0
 --- !u!1 &5339346681992896182
 GameObject:

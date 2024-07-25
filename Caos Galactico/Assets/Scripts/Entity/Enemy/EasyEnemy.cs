@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class EasyEnemy : Enemy
 {
@@ -8,19 +7,6 @@ public class EasyEnemy : Enemy
     [Header("Parameters")]
     [SerializeField] float _speedMovement = 5;
     [SerializeField] float _movementRange = 4;
-    [Header("Life Config")]
-    [SerializeField] Image _barLife;
-    [SerializeField] float _maxLife;
-    [SerializeField] float _life;
-    [Header("Bullet Config")]
-    [SerializeField] EnemyBullet _bulletPrefab;
-    [SerializeField] Transform _bulletSpawn;
-    [SerializeField] float _fireRate = 1;
-    float _timer;
-    [SerializeField] int _numberOfProjectiles = 5;
-
-    Factory<EnemyBullet> _factory;
-    ObjectPool<EnemyBullet> _objectPool;
 
     public static event Action OnDeath;
 

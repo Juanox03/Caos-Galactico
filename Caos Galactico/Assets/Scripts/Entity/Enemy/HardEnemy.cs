@@ -1,8 +1,13 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
-public class MediumEnemy : Enemy
+public class HardEnemy : Enemy
 {
+    [Header("Values")]
+    [SerializeField] int _numberOfSecondaryProjectiles = 5;
+    [SerializeField] float _pauseDuration;
+
     public static event Action OnDeath;
 
     private void Start()
@@ -18,7 +23,7 @@ public class MediumEnemy : Enemy
         Shoot();
     }
 
-    private void Shoot()
+    void Shoot()
     {
         _timer += Time.deltaTime;
 
@@ -28,15 +33,35 @@ public class MediumEnemy : Enemy
 
             for (int i = 0; i < _numberOfProjectiles; i++)
             {
-                int shootAngle = i * angle;
+                int angleShoot = i * angle;
 
                 EnemyBullet bullet = _objectPool.Get();
                 bullet.AddReference(_objectPool);
                 bullet.transform.position = _bulletSpawn.position;
                 bullet.transform.forward = _bulletSpawn.forward;
-                bullet.transform.rotation = Quaternion.Euler(0, shootAngle, 0);
+                bullet.transform.rotation = Quaternion.Euler(0, angleShoot, 0);
+
+                StartCoroutine(DivideProjectile(bullet));
             }
             _timer = 0;
+        }
+    }
+
+    IEnumerator DivideProjectile(EnemyBullet b)
+    {
+        yield return new WaitForSeconds(_pauseDuration);
+
+        int angle = 360 / _numberOfProjectiles;
+
+        for (int i = 0; i < _numberOfSecondaryProjectiles; i++)
+        {
+            int angleShoot = i * angle;
+
+            EnemyBullet bullet = _objectPool.Get();
+            bullet.AddReference(_objectPool);
+            bullet.transform.position = b.transform.position;
+            bullet.transform.forward = b.transform.forward;
+            bullet.transform.rotation = Quaternion.Euler(0, angleShoot, 0);
         }
     }
 

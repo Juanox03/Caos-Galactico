@@ -27,7 +27,7 @@ public class EnemyBullet : MonoBehaviour
         }
 
         if (other.CompareTag("Wall"))
-            Destroy(gameObject);
+            TurnOff(this);
     }
 
     public void AddReference(ObjectPool<EnemyBullet> op)
