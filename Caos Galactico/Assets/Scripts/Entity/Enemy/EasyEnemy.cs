@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class EasyEnemy : Enemy
@@ -7,8 +6,6 @@ public class EasyEnemy : Enemy
     [Header("Parameters")]
     [SerializeField] float _speedMovement = 5;
     [SerializeField] float _movementRange = 4;
-
-    public static event Action OnDeath;
 
     private void Start()
     {
@@ -56,7 +53,7 @@ public class EasyEnemy : Enemy
 
         if (_life <= 0)
         {
-            OnDeath?.Invoke();
+            EventManager.Trigger("OnEnemyDeath");
             Destroy(gameObject);
         }
     }

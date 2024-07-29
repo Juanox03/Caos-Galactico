@@ -1,15 +1,8 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
-
-    [Header("Instantiate Player/Enemy")]
-    [SerializeField] Player _player;
-    [SerializeField] Enemy[] _enemys;
-    [SerializeField] Transform _spawnPointPlayer;
-    [SerializeField] Transform _spawnPointEnemy;
+    //public static GameManager Instance;
 
     [Header("Instantiate Power Up")]
     [SerializeField] GameObject[] _powerUpPrefabs;
@@ -21,19 +14,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] CanvasGroup _gameWinScreen;
     [SerializeField] CanvasGroup _gamePauseScreen;
 
-    private bool _instantiateEnity = true;
     private void Awake()
     {
-        Player.OnDeath += OnPLayerLose;
-        EasyEnemy.OnDeath += OnPLayerWin;
-
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-            Destroy(gameObject);
+        EventManager.Subscribe("OnPlayerDeath", OnPLayerLose);
+        EventManager.Subscribe("OnEnemyDeath", OnPLayerWin);
     }
 
     private void Update()
@@ -45,35 +29,8 @@ public class GameManager : MonoBehaviour
             _timer = 0;
         }
 
-        var levelName = SceneManager.GetActiveScene().name;
-
-        switch (levelName)
-        {
-            case "Level 1":
-                if (_instantiateEnity)
-                {
-                    Instantiate(_enemys[0], _spawnPointEnemy.position, _enemys[0].transform.rotation);
-                    Instantiate(_player, _spawnPointPlayer.position, Quaternion.identity);
-                    _instantiateEnity = false;
-                }
-                break;
-            case "Level 2":
-                if (_instantiateEnity)
-                {
-                    Instantiate(_enemys[1], _spawnPointEnemy.position, _enemys[1].transform.rotation);
-                    Instantiate(_player, _spawnPointPlayer.position, Quaternion.identity);
-                    _instantiateEnity = false;
-                }
-                break;
-            case "Level 3":
-                if (_instantiateEnity)
-                {
-                    Instantiate(_enemys[2], _spawnPointEnemy.position, _enemys[2].transform.rotation);
-                    Instantiate(_player, _spawnPointPlayer.position, Quaternion.identity);
-                    _instantiateEnity = false;
-                }
-                break;
-        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+            GamePause();
     }
 
     void InstantiatePowerUp()
@@ -105,7 +62,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    private void OnPLayerLose()
+    private void OnPLayerLose(params object[] parameter)
     {
         _gameOverScreen.alpha = 1;
         _gameOverScreen.interactable = true;
@@ -113,7 +70,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    private void OnPLayerWin()
+    private void OnPLayerWin(params object[] parameter)
     {
         _gameWinScreen.alpha = 1;
         _gameWinScreen.interactable = true;

@@ -1,10 +1,7 @@
-using System;
 using UnityEngine;
 
 public class MediumEnemy : Enemy
 {
-    public static event Action OnDeath;
-
     private void Start()
     {
         _life = _maxLife;
@@ -47,7 +44,7 @@ public class MediumEnemy : Enemy
 
         if (_life <= 0)
         {
-            OnDeath?.Invoke();
+            EventManager.Trigger("OnEnemyDeath");
             Destroy(gameObject);
         }
     }

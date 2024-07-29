@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -7,8 +6,6 @@ public class HardEnemy : Enemy
     [Header("Values")]
     [SerializeField] int _numberOfSecondaryProjectiles = 5;
     [SerializeField] float _pauseDuration;
-
-    public static event Action OnDeath;
 
     private void Start()
     {
@@ -72,7 +69,7 @@ public class HardEnemy : Enemy
 
         if (_life <= 0)
         {
-            OnDeath?.Invoke();
+            EventManager.Trigger("OnEnemyDeath");
             Destroy(gameObject);
         }
     }

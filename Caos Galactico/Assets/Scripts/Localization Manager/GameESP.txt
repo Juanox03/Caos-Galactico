@@ -3,14 +3,14 @@
 "IDBTNOpcions" : "Opciones",
 "IDBTNCredits" : "Creditos",
 "IDBTNQuit" : "Salir",
-"IDTXTSelectLevel" : "Seleccionar Nivel",
+"IDBTNResume" : "Reanudar",
 "IDBTNBack" : "Volver",
+"IDTXTSelectLevel" : "Seleccionar Nivel",
 "IDTXTLanguage" : "Idioma",
 "IDTXTCredits" : "Hecho por",
 "IDTXTGameOver" : "Perdiste",
 "IDTXTWin" : "Ganaste",
 "IDTXTPause" : "Pausa",
-"IDTXTResume" : "Reanudar",
 "IDTXTMainMenu" : "Menú Principal",
 "IDTXTRetry" : "Reintentar"
 }

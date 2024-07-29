@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PowerUp : MonoBehaviour
+public class PowerUp : MonoBehaviour, IPowerUp
 {
     enum PowerUpType
     {
@@ -15,19 +15,24 @@ public class PowerUp : MonoBehaviour
         var player = other.GetComponent<Player>();
         if(player != null)
         {
-            switch (_powerUpType)
-            {
-                case PowerUpType.Damage:
-                    player.PowerUpMoreDamage(_amount);
-                    break;
-                case PowerUpType.Health:
-                    player.RecuperarVida();
-                    break;
-                default:
-                    break;
-            }
+            ActivatePowerUp(player);
 
             Destroy(gameObject);
+        }
+    }
+
+    public void ActivatePowerUp(Player player)
+    {
+        switch (_powerUpType)
+        {
+            case PowerUpType.Damage:
+                player.PowerUpMoreDamage(_amount);
+                break;
+            case PowerUpType.Health:
+                player.RecuperarVida();
+                break;
+            default:
+                break;
         }
     }
 }
