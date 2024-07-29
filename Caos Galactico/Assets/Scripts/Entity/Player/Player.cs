@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
     PlayerInputs _inputs;
 
     public static event Action OnDeath;
+    public delegate void PlayerDeath();
+    public event PlayerDeath OnPlayerDeath; 
 
     private void Start()
     {
@@ -81,6 +83,7 @@ public class Player : MonoBehaviour
         if (_health <= 0)
         {
             OnDeath?.Invoke();
+	        OnPlayerDeath?();
             Destroy(gameObject);
         }
     }
