@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -60,6 +61,11 @@ public class GameManager : MonoBehaviour
         _gamePauseScreen.interactable = false;
         _gamePauseScreen.blocksRaycasts = false;
         Time.timeScale = 1;
+    }
+
+    public void GameRetry()
+    {
+        Scenemanager.Instance.ChangeLevel(SceneManager.GetActiveScene().name);
     }
 
     private void OnPLayerLose(params object[] parameter)

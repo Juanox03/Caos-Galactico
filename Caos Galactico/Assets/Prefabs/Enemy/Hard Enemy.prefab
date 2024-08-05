@@ -220,8 +220,8 @@ MonoBehaviour:
   _bulletPrefab: {fileID: 4442722929629508172, guid: b157631e79463e7489c2c784d0ca927a, type: 3}
   _bulletSpawn: {fileID: 210386205507323676}
   _fireRate: 1.5
-  _numberOfProjectiles: 5
-  _numberOfSecondaryProjectiles: 5
+  _numberOfProjectiles: 6
+  _numberOfSecondaryProjectiles: 6
   _pauseDuration: 0.5
 --- !u!1001 &164498923031491011
 PrefabInstance:

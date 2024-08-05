@@ -23,11 +23,11 @@ public class EnemyBullet : MonoBehaviour
         if (player != null)
         {
             player.GetDamage();
-            Destroy(gameObject);
+            _objectPool.StockAdd(this);
         }
 
         if (other.CompareTag("Wall"))
-            TurnOff(this);
+            _objectPool.StockAdd(this);
     }
 
     public void AddReference(ObjectPool<EnemyBullet> op)

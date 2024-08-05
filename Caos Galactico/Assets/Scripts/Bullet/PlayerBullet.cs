@@ -16,9 +16,7 @@ public class PlayerBullet : MonoBehaviour
 
         counter += Time.deltaTime;
         if (counter >= 2)
-        {
             _objectPool.StockAdd(this);
-        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -27,12 +25,11 @@ public class PlayerBullet : MonoBehaviour
         if (enemy != null)
         {
             enemy.GetDamage(_damage);
-            Destroy(gameObject);
+            _objectPool.StockAdd(this);
         }
 
         if (other.CompareTag("Wall"))
-            Destroy(gameObject);
-
+            _objectPool.StockAdd(this);
     }
 
     public void AddReference(ObjectPool<PlayerBullet> op)
