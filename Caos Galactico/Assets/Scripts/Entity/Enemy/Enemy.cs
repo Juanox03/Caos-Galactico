@@ -3,13 +3,13 @@ using UnityEngine.UI;
 
 public abstract class Enemy : MonoBehaviour
 {
-    [Header("Values")]
+    [Header("---------- Values ----------")]
     [Header("Life Config")]
     [SerializeField] protected Image _barLife;
     [SerializeField] protected float _maxLife;
     [SerializeField] protected float _life;
 
-    [Header("Bullet Config")]
+    [Header("---------- Bullet Config ----------")]
     [SerializeField] protected EnemyBullet _bulletPrefab;
     [SerializeField] protected Transform _bulletSpawn;
     [SerializeField] protected float _fireRate = 1;

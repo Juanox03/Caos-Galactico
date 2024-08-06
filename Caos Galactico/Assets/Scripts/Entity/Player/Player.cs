@@ -3,16 +3,16 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [Header("Values")]
-    [Header("Parameters")]
+    [Header("---------- Values ----------")]
+    [Header("---------- Parameters ----------")]
     [SerializeField] float _speedMovement;
-    [Header("Bullet")]
+    [Header("---------- Bullet ----------")]
     [SerializeField] PlayerBullet _bulletPrefab;
     [SerializeField] Transform _bulletSpawn;
     [SerializeField] float _fireRate;
     float _timer;
     [SerializeField] float _damage;
-    [Header("Health")]
+    [Header("---------- Health ----------")]
     [SerializeField] int _health = 3;
     [SerializeField] GameObject[] _hearts;
 

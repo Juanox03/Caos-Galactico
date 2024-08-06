@@ -5,12 +5,12 @@ public class GameManager : MonoBehaviour
 {
     //public static GameManager Instance;
 
-    [Header("Instantiate Power Up")]
+    [Header("---------- Instantiate Power Up ----------")]
     [SerializeField] GameObject[] _powerUpPrefabs;
     [SerializeField] Transform _floor;
     float _timer = 0;
 
-    [Header("Canvas Group")]
+    [Header("---------- Canvas Group ----------")]
     [SerializeField] CanvasGroup _gameOverScreen;
     [SerializeField] CanvasGroup _gameWinScreen;
     [SerializeField] CanvasGroup _gamePauseScreen;

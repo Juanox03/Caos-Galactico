@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class HardEnemy : Enemy
 {
-    [Header("Values")]
+    [Header("---------- Values ----------")]
     [SerializeField] int _numberOfSecondaryProjectiles = 5;
     [SerializeField] float _pauseDuration;
 

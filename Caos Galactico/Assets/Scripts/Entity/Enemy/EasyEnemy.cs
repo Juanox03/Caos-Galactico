@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class EasyEnemy : Enemy
 {
-    [Header("Values")]
-    [Header("Parameters")]
+    [Header("---------- Values ----------")]
+    [Header("---------- Parameters ----------")]
     [SerializeField] float _speedMovement = 5;
     [SerializeField] float _movementRange = 4;
 

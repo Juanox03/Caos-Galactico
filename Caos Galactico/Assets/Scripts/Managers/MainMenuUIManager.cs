@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class MainMenuUIManager : MonoBehaviour
 {
-    [Header("Contents")]
+    [Header("---------- Contents ----------")]
     [SerializeField] GameObject _playContent;
     [SerializeField] GameObject _opcionsContent;
     [SerializeField] GameObject _creditsContent;
 
-    [Header("Texts")]
+    [Header("---------- Texts ----------")]
     [SerializeField] TextMeshProUGUI _companyName;
     [SerializeField] TextMeshProUGUI _versionGame;
 
-    [Header("Canvas Group")]
+    [Header("---------- Canvas Group ----------")]
     [SerializeField] CanvasGroup _canvasGroup;
 
     private void Start()
