@@ -18,8 +18,8 @@ public class MainMenuUIManager : MonoBehaviour
 
     private void Start()
     {
-        _companyName.text = PlayerSettings.companyName;
-        _versionGame.text = PlayerSettings.bundleVersion;
+        _companyName.text = Application.companyName;
+        _versionGame.text = Application.version;
     }
 
     public void PlayContentEnable()
