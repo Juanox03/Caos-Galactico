@@ -15,12 +15,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] CanvasGroup _gameWinScreen;
     [SerializeField] CanvasGroup _gamePauseScreen;
 
-    private void Awake()
+    private void OnEnable()
     {
         EventManager.Subscribe("OnPlayerDeath", OnPLayerLose);
         EventManager.Subscribe("OnEnemyDeath", OnPLayerWin);
     }
 
+    private void OnDisable()
+    {
+        EventManager.Unsubscribe("OnPlayerDeath", OnPLayerLose);
+        EventManager.Unsubscribe("OnEnemyDeath", OnPLayerWin);
+
+    }
     private void Update()
     {
         _timer += Time.deltaTime;
@@ -70,6 +76,7 @@ public class GameManager : MonoBehaviour
 
     private void OnPLayerLose(params object[] parameter)
     {
+        Debug.Log(_gameOverScreen);
         _gameOverScreen.alpha = 1;
         _gameOverScreen.interactable = true;
         _gameOverScreen.blocksRaycasts = true;
